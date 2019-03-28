@@ -1,0 +1,7 @@
+*.pyc
+__pycache__
+dropin.cache
+build
+*.egg-info
+dist
+missfont.log

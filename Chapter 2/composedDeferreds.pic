@@ -1,0 +1,81 @@
+.PS
+
+copy "stevens.pic"
+
+define executionPath { dashed 0.025 }
+
+# callback( name, width, fill, label )
+define callback X
+    $4: box $1 wid $2
+        move to $4.sw + (0, -0.25)
+X
+
+deferredX = 0.25; deferredY = 5
+OuterDeferred: dash_box( (deferredX, deferredY + 0.2), (deferredX + 4.3, deferredY + 2.2) )
+OuterDeferredCallback: box at (deferredX + 1.75, deferredY + 2.7) ht .3 width 2.15 "outerDeferred.callback('result')"
+circle radius 0.1 at OuterDeferredCallback.n + (0, 0.1) "\fBA\fP"
+
+move to (deferredX + 1.05, deferredY + 1.1)
+OuterDeferredCallbacks: [
+    callback("printAndPassThrough, args=(1,)", 2.25, 0.75, PTP)
+    callback("returnInnerDeferred, args=(2,)", 2.25, 0.75, RID)
+    callback("printAndPassThrough, args=(3,)", 2.25, 0.75, Other1)
+    callback("printAndPassThrough, args=(4,)", 2.25, 0.75, Other2)
+    spline_dr(PTP.e + (0, 0.15), RID.e, 0, 0.35, ->)
+    spline_dr(PTP.e + (0, 0.05), RID.e + (0, 0.10), 0, 0.25, ->, executionPath)
+    "'result'" at (2.85, -0.15)
+    spline_dr(Other1.e + (0, -0.05), Other2.e + (0, -0.15), 0, 0.35, ->)
+    spline_dr(Other1.e - (0, 0.15), Other2.e + (0, -0.05), 0, 0.25, ->, executionPath)
+    "'inner result'" at (3, -1.32)
+]
+vv_spline(OuterDeferredCallback.e, OuterDeferredCallbacks.n, 0, 1, ->, executionPath)
+vv_spline(OuterDeferredCallback.e + (0, 0.10), OuterDeferredCallbacks.n + (0.3, 0), 0, 1, ->)
+left_brace(OuterDeferredCallbacks.nw, OuterDeferredCallbacks.sw + (0, 0.25))
+ibox at Bracept - (0.5, 0) "outerDeferred's"
+ibox at Bracept - (0.5, 0.15) "callbacks"
+
+# callback( name, width, fill, label )
+define callback X
+    $4: box $1 wid $2
+        move to $4.s + (0, 0)
+X
+
+deferredX = 2; deferredY = 2.35
+dash_box( (deferredX, deferredY + 0.7), (deferredX + 4.6, deferredY + 1.7) )
+InnerDeferredCallback: box at (deferredX + 1.04, deferredY + 2.2) ht 0.3 width 2.5 "innerDeferred.callback('inner result')"
+circle radius 0.1 at InnerDeferredCallback.n + (0, 0.1) "\fBB\fP"
+
+move to (deferredX + 2.6, 4.05)
+InnerDeferredCallbacks: [
+    callback("printAndPassThrough, args=(2, 'a')", 2.3, 0.75, PTP1)
+    callback("printAndPassThrough, args=(2, 'b')", 2.3, 0.75, PTP2)
+    spline_dr(PTP1.e + (0, 0.15), PTP2.e + (0, 0.05), 0, 0.35, ->)
+    spline_dr(PTP1.e + (0, 0.05), PTP2.e  + (0, 0.15), 0, 0.25, ->, executionPath)
+    "'inner result'" at PTP1.e + (0.80, -0.15)
+]
+vv_spline(InnerDeferredCallback.e + (0, -0.10), InnerDeferredCallbacks.n + (-0.10, 0), 0, 0.30, ->, executionPath)
+vv_spline(InnerDeferredCallback.e, InnerDeferredCallbacks.n, 0, 0.30, ->)
+left_brace(InnerDeferredCallbacks.nw, InnerDeferredCallbacks.sw + (0, 0))
+ibox at Bracept - (0.5, 0) "innerDeferred's"
+ibox at Bracept - (0.5, 0.15) "callbacks"
+
+spline -> from OuterDeferredCallbacks.RID.e + (0, -0.15) \
+    right 0.5 then \
+    right 1.7 down 0.9 then \
+    to 6.7, 4.25 executionPath
+spline -> from InnerDeferredCallbacks.PTP2.e  + (0, -0.15) \
+    right 1.2 then \
+    right .30 up .75 then \
+    left 1.0 up 1.10 then \
+    left 0.5  up 0.48 then \
+    left 0.95 up 0.60 then \
+    to OuterDeferredCallbacks.Other1.e + (0, 0.15)
+
+spline -> from InnerDeferredCallbacks.PTP2.e + (0, -0.05) \
+    right 1.05 then \
+    right .35 up .6 then \
+    left 1.45 up 1.55 then \
+    left 0.9 up 0.6 then \
+    to OuterDeferredCallbacks.Other1.e + (0, 0.05) executionPath
+
+.PE

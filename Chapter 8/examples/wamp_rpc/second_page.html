@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head></head><body>
+
+<form name="sumForm" method="post">
+  <input type="text" name="number" value="5">
+  <button name="sumButton">Sum!</button>
+  <span id="sumResult">...</span>
+</form>
+
+<script src="../autobahn.js"></script>
+
+<script>
+
+  var connection = new autobahn.Connection({
+    url: "ws://127.0.0.1:8080/ws",
+    realm: "realm1"
+  });
+
+  connection.onopen = function (session, details) {
+    // When we submit the form (e.g: click on the button), call "sum()"
+    // We don't need to know where "sum()" is declared or how it will run,
+    // just that something exists under this name.
+    document.sumForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      // The first parameter is the namespace of the function. The second is
+      // the arguments passed to the function. This returns a promise which
+      // we use to set the value of our span when the results comes back
+      session.call('sum', [document.sumForm.number.value]).then(
+        function(result){
+          document.getElementById('sumResult').innerHTML = result;
+      });
+    })
+  }
+  connection.open();
+
+</script>
+
+</body></html>

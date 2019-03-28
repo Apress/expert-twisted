@@ -1,0 +1,23 @@
+.PS
+
+copy "stevens.pic"
+
+define executionPath { dashed 0.025 }
+
+define generator X
+       $6: [ibox width 0.25 $1 height $4; box $2 width $3 height $4 fill $5]
+       move to $6.sw - (0, $4/2)
+X
+
+generator("g1", "...yield from g2", 2, 0.25, 0.1, G1)
+generator("g2", "...yield from g3", 2, 0.25, 0.1, G2)
+generator("g3", "...yield from g4", 2, 0.25, 0.1, G3)
+generator("g4", "...yield from g5", 2, 0.25, 0.1, G4)
+generator("g5", "yield 1", 2, 0.25, 0, G5)
+
+spline_dr(G1.e, G2.e, 0, 0.2, , executionPath)
+spline_dr(G2.e, G3.e, 0, 0.2, , executionPath)
+spline_dr(G3.e, G4.e, 0, 0.2, , executionPath)
+spline_dr(G4.e, G5.e, 0, 0.2, ->, executionPath)
+
+.PE

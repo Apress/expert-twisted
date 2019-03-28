@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head></head><body>
+
+  <div id="files">...</div>
+
+  <script src="../autobahn.js"></script>
+
+  <script>
+
+    // Connection to the WAMP router
+    var connection = new autobahn.Connection({
+      url: "ws://127.0.0.1:8080/ws",
+      realm: "realm1"
+    });
+
+    connection.onopen = function (session, details) {
+
+      // Populate the HTML page with a list of files
+      var div = document.getElementById('files');
+      div.innerHTML = "";
+      function listFile(params, meta, event){
+        var ul = document.getElementById(event.topic);
+        if (!ul){
+          div.innerHTML += "<ul id='" + event.topic + "'></ul>";
+          ul = document.getElementById(event.topic);
+        }
+        ul.innerHTML = "";
+        params[0].forEach(function(f){
+          ul.innerHTML += "<li>" + f + "</li>";
+        })
+      }
+
+      // We tell the router we are interested in events with this name.
+      // This is the "subscribe" part of "PUB/SUB".
+      session.subscribe('filewithext.py', listFile);
+      // Any client, like this Web page, can subscribe to an arbitrary number
+      // of events.
+      session.subscribe('filewithext.txt', listFile);
+    }
+
+    connection.open();
+
+  </script>
+</body></html>

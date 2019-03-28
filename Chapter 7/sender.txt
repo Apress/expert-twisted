@@ -1,0 +1,10 @@
+% wormhole send catalog.pdf
+Sending 143.6 MB file named 'catalog.pdf'
+On the other computer, please run: wormhole receive
+Wormhole code is: 4-bravado-waffle
+
+Sending (<-8.8.8.8:51133)..
+100%|██████████████████████████████| 144M/144M [00:01<00:00, 76.6MB/s]
+File sent.. waiting for confirmation
+Confirmation received. Transfer complete.
+%

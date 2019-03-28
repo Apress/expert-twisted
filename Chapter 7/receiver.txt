@@ -1,0 +1,8 @@
+% wormhole receive
+Enter receive wormhole code: 4-bravado-waffle
+Receiving file (143.6 MB) into: catalog.pdf
+ok? (y/N): y
+Receiving (->tcp:8.8.4.4:53155)..
+100%|██████████████████████████████| 144M/144M [00:02<00:00, 76.4MB/s]
+Received file written to catalog.pdf
+%

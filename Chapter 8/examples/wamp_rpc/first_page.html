@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head></head><body>
+
+  <form name="sumForm"><input type="text" name="number" value="3"></form>
+
+  <script src="../autobahn.js"></script>
+
+  <script>
+
+    // Connection to the WAMP router
+    var connection = new autobahn.Connection({
+      url: "ws://127.0.0.1:8080/ws",
+      realm: "realm1"
+    });
+
+    // Callback for when the connection is established
+    connection.onopen = function (session, details) {
+      // We register a function under the name "sum", so that any WAMP
+      // client on "realm1" can call it remotly. This is RPC.
+      session.register('sum', function(a){
+        // It's just a regular function, really. But the parameters and
+        // return value must be serializable. By default to JSON.
+        return parseInt(a) + parseInt(document.sumForm.number.value);
+      });
+    }
+
+    // Start the connection
+    connection.open();
+
+  </script>
+</body></html>

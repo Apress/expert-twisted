@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" baseProfile="full" id="body" width="8in" height="8in" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+<title>SVG drawing</title>
+<desc>This was produced by version 4.4 of GNU libplot, a free library for exporting 2-D vector graphics.</desc>
+<rect id="background" x="0" y="0" width="1" height="1" stroke="none" fill="white"/>
+<g id="content" transform="translate(0.4625,0.35156) scale(1,-1) scale(0.125) " xml:space="preserve" stroke="black" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10.433" stroke-dasharray="none" stroke-dashoffset="0" stroke-opacity="1" fill="none" fill-rule="evenodd" fill-opacity="1" font-style="normal" font-variant="normal" font-weight="normal" font-stretch="normal" font-size-adjust="none" letter-spacing="normal" word-spacing="normal" text-anchor="start">
+<rect x="0" y="-0.25" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0,-0.17403) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >&lt;project root&gt;</text>
+<rect x="0.2" y="-0.625" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.2,-0.54903) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >setup.py</text>
+<rect x="0.2" y="-0.875" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.2,-0.79903) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >feed_aggregator/</text>
+<rect x="0.4" y="-1.25" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.4,-1.174) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >__init__.py</text>
+<rect x="0.4" y="-1.5" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.4,-1.424) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >_service.py</text>
+<rect x="0.4" y="-1.75" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.4,-1.674) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >test/</text>
+<rect x="0.6" y="-2.125" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.6,-2.049) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >__init__.py</text>
+<rect x="0.6" y="-2.375" width="0" height="0.25" stroke-width="0.0094118" />
+<text transform="translate(0.6,-2.299) scale(1,-1) scale(0.0069444) " font-family="Helvetica,sans-serif" font-size="20px" stroke="none" fill="black" >test_service.py</text>
+</g>
+</svg>

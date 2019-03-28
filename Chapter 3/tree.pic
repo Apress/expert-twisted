@@ -1,0 +1,23 @@
+.PS
+
+boxwid = .2
+boxht = .25
+
+define cell { box wid 0 boxht }
+define dir { [cell $1 ljust] }
+define file { [cell $1 ljust] }
+define indent { move right boxwid down boxht / 2 }
+
+down
+Root:               dir("<project root>")
+indent
+Setup:              file("setup.py")
+FA:                 dir("feed_aggregator/")
+indent
+FAInit:             file("__init__.py")
+FAService:          file("_service.py")
+FATest:             dir("test/")
+indent
+FATestInit:         file("__init__.py")
+FATestTestService:  file("test_service.py")
+.PE
